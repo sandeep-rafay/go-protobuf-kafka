@@ -1,0 +1,31 @@
+syntax = "proto3";
+package proto.v1;
+option go_package = "go-protobuf/proto/v1";
+
+
+
+message Product {
+  int64 id = 1;
+  string name = 2;
+  string brand = 3;
+}
+
+message GetProductsResponse {
+  repeated Product product = 1;
+}
+
+message GetProductRequest {
+  int64 id = 1;
+}
+
+message GetProductResponse {
+  Product product = 1;
+}
+
+message GetProductsRequest {
+}
+
+service ProductService {
+  rpc GetProduct (GetProductRequest) returns (GetProductResponse) {}
+  rpc GetProducts (GetProductsRequest) returns (GetProductsResponse) {}
+}
